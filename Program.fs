@@ -2,6 +2,7 @@
   open One
   open Two
   open Three
+  open Four
 
   [<EntryPoint>]
   let main args = 
@@ -17,4 +18,6 @@
     printfn "Sum of all parts: %d" sumOfParts
     let sumOfGearWeights = sumGearWeights (schematic, (adjacencyMatrix2 schematic), (weightMatrix schematic))
     printfn "Sum of gear weights: %d" sumOfGearWeights
+    let cardPoints = sumPoints (parseCards "./inputs/4a.txt")
+    printf "Card points: %d" cardPoints
     0

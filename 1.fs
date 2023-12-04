@@ -4,7 +4,7 @@ module One
 
 
   // Part 1
-  let readLines filePath = System.IO.File.ReadLines(filePath)
+  let readLines filePath = System.IO.File.ReadLines(filePath) |> Array.ofSeq
   let calibrationDocument path = readLines path
   let takeFirstLast seq: int = (Seq.head(seq) * 10) + Seq.last seq
   let parseCalibrationValue s = s |> Seq.filter Char.IsDigit |> Seq.map Char.GetNumericValue |> Seq.map int |> takeFirstLast
