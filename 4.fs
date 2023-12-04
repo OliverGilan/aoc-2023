@@ -21,3 +21,18 @@ module Four
      |> Seq.fold (fun acc card -> acc + cardPoints(card.[0], card.[1])) 0
 
   // Part 2
+  let hasWinningMatches (winningNumbers: int[], hadNumbers: int[]) = 
+    hadNumbers 
+    |> Seq.fold (fun acc num -> if Array.contains num winningNumbers then acc + 1 else acc) 0
+
+  let sumTotalCardsCollected (cards: int[][][]) =
+    let originalCards = Array.init cards.Length (fun _ -> 1)
+    originalCards
+    |> Array.mapi (fun i v -> 
+      let copiesWon = hasWinningMatches(cards.[i].[0], cards.[i].[1])
+      for j in i .. i + copiesWon do
+        originalCards.[j] <- originalCards.[j] + v
+      v
+    )
+    |> Array.sum
+    

@@ -19,5 +19,7 @@
     let sumOfGearWeights = sumGearWeights (schematic, (adjacencyMatrix2 schematic), (weightMatrix schematic))
     printfn "Sum of gear weights: %d" sumOfGearWeights
     let cardPoints = sumPoints (parseCards "./inputs/4a.txt")
-    printf "Card points: %d" cardPoints
+    printfn "Card points: %d" cardPoints
+    let totalCards = sumTotalCardsCollected (parseCards "./inputs/4a.txt")
+    printfn "Total Cards collected: %d" totalCards
     0
