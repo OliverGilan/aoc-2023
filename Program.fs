@@ -1,6 +1,7 @@
 ﻿module AoC2023
   open One
   open Two
+  open Three
 
   [<EntryPoint>]
   let main args = 
@@ -8,7 +9,12 @@
     let calibration = calculateCalibration document
     printfn "Calibration: %d" calibration
     let games = readLines "./inputs/2a.txt" |> Seq.map parseCubeGame
-    let sum = sumValidGames games
-    printfn "Sum valid games: %d" sum
+    let sumOfGames = sumValidGames games
+    printfn "Sum valid games: %d" sumOfGames
     printfn "Sum min set power: %d" (minSetPowerSum games)
+    let schematic = parseSchematic "./inputs/3a.txt"
+    let sumOfParts = sumParts(schematic, (adjacencyMatrix schematic isSymbol))
+    printfn "Sum of all parts: %d" sumOfParts
+    let sumOfGearWeights = sumGearWeights (schematic, (adjacencyMatrix2 schematic), (weightMatrix schematic))
+    printfn "Sum of gear weights: %d" sumOfGearWeights
     0
