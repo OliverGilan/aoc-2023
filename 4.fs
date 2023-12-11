@@ -1,5 +1,4 @@
 module Four
-  open System
   open One
   open System.Text.RegularExpressions
 
