@@ -1,9 +1,11 @@
 ﻿module AoC2023
+  open System
   open One
   open Two
   open Three
   open Four
   open Five
+  open Six
 
   [<EntryPoint>]
   let main args = 
@@ -25,8 +27,8 @@
     printfn "Total Cards collected: %d" totalCards
 
     
-    let almanac = readLines "./inputs/5.txt"
-    let almanacSeeds = parseSeedRanges almanac
+    // let almanac = readLines "./inputs/5.txt"
+    // let almanacSeeds = parseSeedRanges almanac
     // printfn "seeds parsed"
     // printfn "seeds: %A" almanacSeeds
     // let seedToSoil = parseMap almanac "seed" "soil"
@@ -48,6 +50,15 @@
     // let humidityToLocation = parseMap almanac "humidity" "location"
     // printfn "location: %d" (navigateMap humidityToLocation (navigateMap temperatureToHumidity (navigateMap lightToTemperature (navigateMap waterToLight (navigateMap fertilizerToWater (navigateMap soilToFertilizer (navigateMap seedToSoil almanacSeeds[0])))))))
     // printfn "Almanac stage: %A" [seedToSoil; soilToFertilizer; fertilizerToWater; waterToLight; lightToTemperature; temperatureToHumidity; humidityToLocation]
-    let lowestLocations = navigateAlmanac(almanac, almanacSeeds, stages) |> Array.min
-    printfn "lowest locations: %d" lowestLocations 
+    // let lowestLocations = navigateAlmanac(almanac, almanacSeeds, stages) |> Array.min
+    // printfn "lowest locations: %d" lowestLocations 
+    // let [|times; records|] = readLines "./inputs/6.txt" |> Array.map raceVector
+    let [|time; record|] = readLines "./inputs/6.txt" |> Array.map singleRace
+    // let possibilities = generatePossibilities (time + 1L)
+    // printfn "winMultiples: %A" (Array.zip times records)
+    // printfn "%d %d" possibilities.Length possibilities[0].Length
+    // printfn "%A" possibilities[7]
+    // let winMultiples = winPossibilities (time, record, possibilities) |> Array.length
+    let winOptions = oneRacePossibility time record
+    printfn "winMultiples: %d" winOptions
     0
